@@ -15,7 +15,11 @@ impl Ram {
 	}
 	
 	pub fn rand(size: usize) -> Self {
-		Self(vec![rand::random(); size])
+		let mut contents = vec![0; size];
+		contents.iter_mut().for_each(|b| {
+			*b = rand::random();
+		});
+		Self(contents)
 	}
 }
 
