@@ -11,7 +11,6 @@ fn main() {
 	];
 	
 	let mut cpu = melo::mfcpu::MeloCpu::rand();
-	cpu.reset();
 	
 	while !cpu.is_halted() {
 		println!("{cpu}");

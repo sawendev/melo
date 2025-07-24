@@ -56,7 +56,11 @@ impl std::fmt::Display for MeloCpu {
 impl MeloCpu {
 	pub fn new() -> Self { Self::default() }
 	pub fn zero() -> Self { Self { regs: [0; 16] } }
-	pub fn rand() -> Self { Self { regs: rand::random() } }
+	pub fn rand() -> Self {
+		let mut melo = Self { regs: rand::random() };
+		melo.reset();
+		melo
+	}
 	
 	pub fn reset(&mut self) {
 		self.set_le_reg(PC, 0);
