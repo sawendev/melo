@@ -311,28 +311,24 @@ impl MeloCpu {
 	fn shl(&mut self, dest: u8, src: u8) {
 		let (lhs, rhs) = (self.get_reg(dest), self.get_reg(src));
 		let val = lhs.unbounded_shl(rhs as u32);
-		self.update_logic_flags(val);
 		self.set_reg(dest, val);
 	}
 	
 	fn shr(&mut self, dest: u8, src: u8) {
 		let (lhs, rhs) = (self.get_reg(dest), self.get_reg(src));
 		let val = lhs.unbounded_shr(rhs as u32);
-		self.update_logic_flags(val);
 		self.set_reg(dest, val);
 	}
 	
 	fn shlimm(&mut self, dest: u8, src: u8) {
 		let lhs = self.get_reg(dest);
 		let val = lhs.unbounded_shl(src as u32);
-		self.update_logic_flags(val);
 		self.set_reg(dest, val);
 	}
 	
 	fn shrimm(&mut self, dest: u8, src: u8) {
 		let lhs = self.get_reg(dest);
 		let val = lhs.unbounded_shr(src as u32);
-		self.update_logic_flags(val);
 		self.set_reg(dest, val);
 	}
 	
